@@ -1,7 +1,8 @@
 ---
 title: A Biomimetic Robotic System
 subtitle: with Tensegrity-Based Compliant Mechanism
-tag: Robotics · Master thesis
+category: robotics
+tag: Master thesis
 year: 2023–2024
 order: 1
 summary: A tensegrity-based robot with environmental adaptability, structural flexibility, and versatile
@@ -10,6 +11,7 @@ cover: /assets/img/tensegrity-p01-01.webp
 hero: /assets/img/tensegrity-p01-01.webp
 instructor: June-Hao Hou
 collaboration: ''
+location: ''
 publication: 'Full paper, CAADRIA 2024 (Proceedings Vol. 3, pp. 131–140). [doi:10.52842/conf.caadria.2024.3.131](https://doi.org/10.52842/conf.caadria.2024.3.131)
 
 

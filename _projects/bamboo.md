@@ -1,15 +1,17 @@
 ---
 title: Low-Tech Bamboo Constructions
 subtitle: A Cable-Strut Approach for Resource-Limited Conditions
-tag: Design-build · Architecture
+category: architecture
+tag: Design-build
 year: '2023'
-order: 6
+order: 7
 summary: A reciprocal bamboo structure based on a cable-strut connection, integrating design computation
   and construction.
 cover: /assets/img/bamboo-p08-01.webp
 hero: /assets/img/bamboo-p08-01.webp
 instructor: June-Hao Hou, Pei-Hsien Hsu
 collaboration: ''
+location: ''
 publication: Full paper, eCAADe 2024 (Proceedings Vol. 1, pp. 393–400). [CumInCAD](https://papers.cumincad.org/cgi-bin/works/paper/ecaade2024_115)
 research_type: Collective Design Research, Design-Build Project
 video: ''

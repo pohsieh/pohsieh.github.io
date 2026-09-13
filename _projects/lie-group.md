@@ -1,7 +1,8 @@
 ---
 title: Visualization and Optimization of Continuum Robots
 subtitle: Integration of Lie Group Kinematics and Evolutionary Algorithm
-tag: Robotics · Computational modelling
+category: robotics
+tag: Computational modelling
 year: '2024'
 order: 2
 summary: An efficient modelling method for continuum robots that replaces manual modal-coefficient identification
@@ -10,6 +11,7 @@ cover: /assets/img/lie-group-p06-01.webp
 hero: /assets/img/lie-group-p06-01.webp
 instructor: June-Hao Hou
 collaboration: ''
+location: ''
 publication: 'Preprint on arXiv: [arXiv:2410.14305](https://doi.org/10.48550/arXiv.2410.14305)'
 research_type: Independent Design Research
 video: 9UWLf1npNsw

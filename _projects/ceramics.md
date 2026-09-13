@@ -1,15 +1,17 @@
 ---
 title: Robotic 3D-Printed Ceramics
 subtitle: Merging Crafts with Digital Fabrication
-tag: Digital fabrication · Robotics
+category: robotics
+tag: Digital fabrication
 year: 2023–2024
-order: 7
+order: 5
 summary: 'Robotic clay extrusion: end-effector design, toolpath computation, material experiments and
   ceramics processing.'
 cover: /assets/img/ceramics-p10-06.webp
 hero: /assets/img/ceramics-p09-01.webp
 instructor: Shih-Yuan Wang
 collaboration: Hsin Chen, Yi-Ting Lo, Glazeshome
+location: ''
 publication: ''
 research_type: Collective Design Research and Implementation
 video: ''

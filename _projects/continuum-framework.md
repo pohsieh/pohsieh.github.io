@@ -1,7 +1,8 @@
 ---
 title: A Multimedia Framework for Continuum Robots
 subtitle: Systematic, Computational, and Control Perspectives
-tag: Robotics · HRI
+category: robotics
+tag: Human–robot interaction
 year: '2024'
 order: 3
 summary: A unified system for the design, simulation and control of continuum robots, in both digital
@@ -10,6 +11,7 @@ cover: /assets/img/continuum-framework-p05-01.webp
 hero: /assets/img/continuum-framework-p05-01.webp
 instructor: June-Hao Hou
 collaboration: ''
+location: ''
 publication: Full paper, IEEE ISPACS 2024. [doi:10.1109/ISPACS62486.2024.10868720](https://doi.org/10.1109/ISPACS62486.2024.10868720)
   · [arXiv](https://doi.org/10.48550/arXiv.2409.14708)
 research_type: Independent Design Research

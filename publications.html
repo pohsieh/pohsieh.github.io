@@ -1,0 +1,25 @@
+---
+layout: default
+title: Publications
+permalink: /publications/
+---
+{%- assign profile = site.data.profile -%}
+<main class="wrap page">
+  <div class="page-head">
+    <div class="eyebrow">{{ site.data.publications | size }} publications</div>
+    <h1>Publications</h1>
+    <p class="lede">Journal and conference papers on robotics, computational design and fabrication. <a href="{{ profile.orcid }}">Full record on ORCID →</a></p>
+  </div>
+  <ul class="pubs">
+    {%- for pub in site.data.publications %}
+    <li>
+      <span class="venue">{{ pub.venue }}</span>
+      <div>
+        <div class="title">{% if pub.url and pub.url != "" %}<a href="{{ pub.url }}" target="_blank" rel="noopener">{{ pub.title }}<span class="ext" aria-hidden="true"> ↗</span></a>{% else %}{{ pub.title }}{% endif %}</div>
+        <div class="authors">{{ pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</div>
+        <div class="where">{{ pub.where | markdownify | remove: '<p>' | remove: '</p>' }}{% if pub.project and pub.project != "" %} · <a href="{{ '/projects/' | append: pub.project | append: '.html' | relative_url }}">project</a>{% endif %}</div>
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+</main>

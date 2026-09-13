@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{%- comment -%} One tab of the sidebar: every project whose `category` equals page.category. {%- endcomment -%}
+{%- assign cat = site.data.categories | where: "key", page.category | first -%}
+{%- assign items = site.projects | where: "category", page.category | sort: "order" -%}
+<main class="wrap page">
+  <div class="page-head">
+    <div class="eyebrow">{% if items.size > 0 %}{{ items.size }} project{% if items.size > 1 %}s{% endif %}{% else %}In progress{% endif %}</div>
+    <h1>{{ cat.title }}</h1>
+    {% if cat.blurb and cat.blurb != "" %}<p class="lede">{{ cat.blurb }}</p>{% endif %}
+  </div>
+  {% if items.size > 0 %}
+  <div class="grid">
+    {%- for p in items %}
+    <a class="card" href="{{ p.url | relative_url }}">
+      <figure{% if p.cover_fit == "contain" %} class="contain"{% endif %}><img src="{{ p.cover | relative_url }}" alt="" loading="lazy"></figure>
+      <div class="meta"><span class="eyebrow">{{ p.tag }}</span><span class="eyebrow">{{ p.year }}</span></div>
+      <h3>{{ p.title }}</h3>
+      <p>{{ p.subtitle }}</p>
+    </a>
+    {%- endfor %}
+  </div>
+  {% else %}
+  <div class="empty">{{ cat.empty_message | default: "Coming soon." }}</div>
+  {% endif %}
+</main>

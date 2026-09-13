@@ -1,15 +1,17 @@
 ---
 title: Discrete Interlocking Formwork
 subtitle: A Computational Solution to Non-Developable Surfaces
+category: architecture
 tag: Computational design · Fabrication
 year: 2023–2024
-order: 5
+order: 6
 summary: An adjustable, chainmail-inspired formwork system for shotcrete 3D concrete printing of complex,
   non-developable surfaces.
 cover: /assets/img/interlocking-formwork-p07-01.webp
 hero: /assets/img/interlocking-formwork-p07-01.webp
 instructor: June-Hao Hou
 collaboration: ''
+location: ''
 publication: Full paper, eCAADe 2024 (Proceedings Vol. 1, pp. 333–342). [CumInCAD](https://papers.cumincad.org/cgi-bin/works/paper/ecaade2024_87)
 research_type: Independent Design Research
 video: ''

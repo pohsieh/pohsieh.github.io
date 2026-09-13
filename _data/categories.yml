@@ -1,0 +1,14 @@
+# Sidebar tabs between Profile and Publications, in order. Each `key` needs a page file
+# <key>.html in the site root (copy robotics.html) and matches `category` in _projects/.
+- key: robotics
+  title: Robotics
+  blurb: Bio-inspired and continuum robots, learning-based control, and robotic fabrication.
+  empty_message: ""
+- key: mechanical
+  title: Mechanical
+  blurb: Mechanical and mechatronic design at TU Delft — tactile sensing, friction and grip force.
+  empty_message: MSc internship and thesis projects — coming soon.
+- key: architecture
+  title: Architecture
+  blurb: Design studio and thesis projects, and computational design for construction — NCKU and NYCU, 2017–2024.
+  empty_message: ""

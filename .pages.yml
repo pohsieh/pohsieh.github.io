@@ -29,6 +29,12 @@ content:
       - name: subtitle
         label: Subtitle
         type: string
+      - name: category
+        label: Section on the home page
+        type: select
+        required: true
+        options:
+          values: [robotics, mechanical, architecture]
       - name: tag
         label: Category label
         type: string
@@ -45,8 +51,14 @@ content:
         label: One-line summary
         type: text
       - name: cover
-        label: Cover image (home page card)
+        label: Cover image (card)
         type: image
+      - name: cover_fit
+        label: Cover fit on the card
+        type: select
+        description: "cover = fill and crop to 16:10 (default); contain = show the whole image"
+        options:
+          values: [cover, contain]
       - name: hero
         label: Hero image (top of the project page)
         type: image
@@ -57,6 +69,10 @@ content:
       - name: collaboration
         label: Collaboration
         type: string
+      - name: location
+        label: Site (location · area)
+        type: string
+        description: "Architecture projects, e.g. Kai-Yuan Park, Tainan · 8,000 m²"
       - name: publication
         label: Publication
         type: text
@@ -137,6 +153,26 @@ content:
             label: Also show under the intro
             type: boolean
 
+  - name: categories
+    label: Sidebar tabs
+    type: file
+    path: _data/categories.yml
+    format: yaml
+    list: true
+    fields:
+      - name: key
+        type: string
+        readonly: true
+        description: "Matches `category` on projects and the page file <key>.html — do not change"
+      - name: title
+        type: string
+      - name: blurb
+        label: Intro line
+        type: text
+      - name: empty_message
+        label: Text shown while the tab has no projects
+        type: string
+
   - name: publications
     label: Publications
     type: file
@@ -150,6 +186,10 @@ content:
       - name: title
         label: Title
         type: string
+      - name: url
+        label: Paper link
+        type: string
+        description: "Makes the title a link — prefer the DOI, e.g. https://doi.org/10.1109/..."
       - name: authors
         label: Authors
         type: string

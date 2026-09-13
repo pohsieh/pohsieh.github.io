@@ -1,7 +1,8 @@
 ---
 title: Comparative Evaluation of Learning Models
 subtitle: for Bionic Robots
-tag: Robotics · Machine learning
+category: robotics
+tag: Machine learning
 year: '2024'
 order: 4
 summary: Evaluating machine-learning models for the model-free control of a tendon-driven bionic robot.
@@ -9,6 +10,7 @@ cover: /assets/img/learning-models-p03-01.webp
 hero: /assets/img/learning-models-p03-01.webp
 instructor: June-Hao Hou
 collaboration: ''
+location: ''
 publication: Full paper, IEEE ISPACS 2024. [doi:10.1109/ISPACS62486.2024.10868337](https://doi.org/10.1109/ISPACS62486.2024.10868337)
   · [arXiv](https://doi.org/10.48550/arXiv.2407.02428)
 research_type: Independent Design Research

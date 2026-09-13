@@ -4,8 +4,11 @@ layout: default
 {%- comment -%}
   Optional fields may be missing or saved as "" by Pages CMS; in Liquid "" is truthy,
   so every optional field is checked with `!= ""` as well.
+  Previous / Next stay within the project's own category (sidebar tab).
 {%- endcomment -%}
-{%- assign projects = site.projects | sort: "order" -%}
+{%- assign cat = site.data.categories | where: "key", page.category | first -%}
+{%- if cat -%}{%- assign projects = site.projects | where: "category", page.category | sort: "order" -%}
+{%- else -%}{%- assign projects = site.projects | sort: "order" -%}{%- endif -%}
 {%- for p in projects -%}{%- if p.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}{%- endfor -%}
 {%- assign last = projects.size | minus: 1 -%}
 {%- if idx > 0 -%}{%- assign pi = idx | minus: 1 -%}{%- assign prev = projects[pi] -%}{%- endif -%}
@@ -14,7 +17,7 @@ layout: default
 {%- assign has_video = false -%}{%- if page.video and page.video != "" -%}{%- assign has_video = true -%}{%- endif -%}
 <main class="wrap">
   <div class="proj-head">
-    {% if page.tag and page.tag != "" %}<div class="eyebrow">{{ page.tag }}</div>{% endif %}
+    <div class="eyebrow">{% if cat %}<a href="{{ '/' | append: cat.key | append: '/' | relative_url }}" style="border:0">{{ cat.title }}</a>{% if page.tag and page.tag != "" %} · {% endif %}{% endif %}{% if page.tag and page.tag != "" %}{{ page.tag }}{% endif %}</div>
     <h1>{{ page.title }}</h1>
     {% if page.subtitle and page.subtitle != "" %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
   </div>
@@ -28,7 +31,8 @@ layout: default
         {% if page.collaboration and page.collaboration != "" %}<dt class="label">Collaboration</dt><dd>{{ page.collaboration }}</dd>{% endif %}
         {% if page.publication and page.publication != "" %}<dt class="label">Publication</dt><dd>{{ page.publication | markdownify | remove: '<p>' | replace: '</p>', '<br>' }}</dd>{% endif %}
         {% if has_video %}<dt class="label">Video</dt><dd><a href="https://youtu.be/{{ page.video }}">Demonstration on YouTube</a></dd>{% endif %}
-        {% if page.research_type and page.research_type != "" %}<dt class="label">Research type</dt><dd>{{ page.research_type }}</dd>{% endif %}
+        {% if page.location and page.location != "" %}<dt class="label">Site</dt><dd>{{ page.location }}</dd>{% endif %}
+        {% if page.research_type and page.research_type != "" %}<dt class="label">Type</dt><dd>{{ page.research_type }}</dd>{% endif %}
         {% if page.year and page.year != "" %}<dt class="label">Year</dt><dd>{{ page.year }}</dd>{% endif %}
         {% if page.keywords and page.keywords.size > 0 %}<dt class="label">Keywords</dt>
         <dd><ul class="keywords">{% for k in page.keywords %}<li>{{ k }}</li>{% endfor %}</ul></dd>{% endif %}

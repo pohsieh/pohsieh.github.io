@@ -4,36 +4,45 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }} — Robotics, Biomechanics &amp; Computational Design{% endif %}</title>
+<title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }} — Robotics, Biomechanics &amp; Architecture{% endif %}</title>
 <meta name="description" content="{{ page.summary | default: site.description | escape }}">
 <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>△</text></svg>">
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="{{ '/' | relative_url }}">{{ profile.name }}</a>
-    <nav class="nav" aria-label="Main">
-      <a href="{{ '/#work' | relative_url }}">Work</a>
-      <a href="{{ '/#publications' | relative_url }}">Publications</a>
-      <a href="{{ '/#cv' | relative_url }}">CV</a>
-      <a href="#contact">Contact</a>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="{{ '/' | relative_url }}">{{ profile.name }}<small>{{ profile.eyebrow }}</small></a>
+    <nav class="tabs" aria-label="Sections">
+      <a href="{{ '/' | relative_url }}"{% if page.url == '/' or page.url == '/index.html' %} aria-current="page"{% endif %}>Profile</a>
+      {%- for cat in site.data.categories %}
+      {%- assign n = site.projects | where: "category", cat.key | size %}
+      <a href="{{ '/' | append: cat.key | append: '/' | relative_url }}"{% if page.category == cat.key %} aria-current="page"{% endif %}>{{ cat.title }}<span class="count">{% if n > 0 %}{{ n }}{% else %}soon{% endif %}</span></a>
+      {%- endfor %}
+      <a href="{{ '/publications/' | relative_url }}"{% if page.url == '/publications/' %} aria-current="page"{% endif %}>Publications<span class="count">{{ site.data.publications | size }}</span></a>
     </nav>
-  </div>
-</header>
-
-{{ content }}
-
-<footer class="site-footer" id="contact">
-  <div class="wrap">
-    <span>© {{ site.time | date: "%Y" }} {{ profile.name }}</span>
-    <div class="links">
+    <div class="side-links">
       {%- for l in profile.links %}
       <a href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.label }}</a>
       {%- endfor %}
     </div>
+  </aside>
+
+  <div class="content">
+    {{ content }}
+
+    <footer class="site-footer" id="contact">
+      <div class="wrap">
+        <span>© {{ site.time | date: "%Y" }} {{ profile.name }}</span>
+        <div class="links">
+          {%- for l in profile.links %}
+          <a href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.label }}</a>
+          {%- endfor %}
+        </div>
+      </div>
+    </footer>
   </div>
-</footer>
+</div>
 <script>
   // Click a figure to view it full screen; click again or press Esc to close.
   document.addEventListener('click', e => {
@@ -49,6 +58,8 @@
     document.body.appendChild(lb);
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelector('.lightbox')?.remove(); });
+  // Keep the active tab visible in the horizontal tab bar on phones.
+  document.querySelector('.tabs [aria-current="page"]')?.scrollIntoView({ block: 'nearest', inline: 'center' });
 </script>
 </body>
 </html>

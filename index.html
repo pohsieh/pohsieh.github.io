@@ -1,10 +1,10 @@
 ---
 layout: default
 ---
+{%- comment -%} Profile tab: intro + CV. Projects live on the category tabs, publications on /publications/. {%- endcomment -%}
 {%- assign profile = site.data.profile -%}
-{%- assign projects = site.projects | sort: "order" -%}
-<main>
-  <div class="wrap intro">
+<main class="wrap">
+  <div class="intro">
     <div class="eyebrow">{{ profile.eyebrow }}</div>
     <h1>{{ profile.name }}</h1>
     <p class="lede">{{ profile.intro }}</p>
@@ -12,71 +12,38 @@ layout: default
       {% for c in profile.chain %}<li>{{ c }}</li>{% endfor %}
     </ul>
     <div class="intro-links">
-      <a href="#work">Selected work ↓</a>
+      {%- for cat in site.data.categories %}
+      {%- assign n = site.projects | where: "category", cat.key | size %}{% if n > 0 %}
+      <a href="{{ '/' | append: cat.key | append: '/' | relative_url }}">{{ cat.title }} →</a>
+      {%- endif %}{% endfor %}
       {%- for l in profile.links %}{% if l.show_in_intro %}
       <a href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.label }}</a>
       {%- endif %}{% endfor %}
     </div>
   </div>
 
-  <section id="work">
-    <div class="wrap">
-      <div class="section-head"><h2>Selected work</h2></div>
-      <div class="grid">
-        {%- for p in projects %}
-        <a class="card" href="{{ p.url | relative_url }}">
-          <figure><img src="{{ p.cover | relative_url }}" alt="" loading="lazy"></figure>
-          <div class="meta"><span class="eyebrow">{{ p.tag }}</span><span class="eyebrow">{{ p.year }}</span></div>
-          <h3>{{ p.title }}</h3>
-          <p>{{ p.subtitle }}</p>
-        </a>
-        {%- endfor %}
-      </div>
-    </div>
-  </section>
-
-  <section id="publications">
-    <div class="wrap">
-      <div class="section-head"><h2>Publications</h2><a class="eyebrow" style="border:0" href="{{ profile.orcid }}">All on ORCID →</a></div>
-      <ul class="pubs">
-        {%- for pub in site.data.publications %}
-        <li>
-          <span class="venue">{{ pub.venue }}</span>
-          <div>
-            <div class="title">{{ pub.title }}</div>
-            <div class="authors">{{ pub.authors | markdownify | remove: '<p>' | remove: '</p>' }}</div>
-            <div class="where">{{ pub.where | markdownify | remove: '<p>' | remove: '</p>' }}{% if pub.project and pub.project != "" %} · <a href="{{ '/projects/' | append: pub.project | append: '.html' | relative_url }}">project</a>{% endif %}</div>
-          </div>
-        </li>
-        {%- endfor %}
-      </ul>
-    </div>
-  </section>
-
   <section id="cv">
-    <div class="wrap">
-      <div class="section-head"><h2>CV</h2></div>
-      <div class="cv">
-        <div>
-          <h3>Education</h3>
-          <dl>
-            {%- for e in site.data.cv.education %}
-            <dt>{{ e.title }}</dt>
-            <dd>{{ e.place }}{% if e.years and e.years != "" %} · {{ e.years }}{% endif %}{% if e.details and e.details != "" %}<br>{{ e.details | markdownify | remove: '<p>' | replace: '</p>', '<br>' }}{% endif %}</dd>
-            {%- endfor %}
-          </dl>
-        </div>
-        <div>
-          <h3>Experience</h3>
-          <dl>
-            {%- for e in site.data.cv.experience %}
-            <dt>{{ e.title }}</dt>
-            <dd>{{ e.place }}{% if e.years and e.years != "" %} · {{ e.years }}{% endif %}{% if e.details and e.details != "" %}<br>{{ e.details | markdownify | remove: '<p>' | replace: '</p>', '<br>' }}{% endif %}</dd>
-            {%- endfor %}
-          </dl>
-          <h3 style="margin-top:28px">Skills</h3>
-          <div class="skills">{{ site.data.cv.skills | markdownify }}</div>
-        </div>
+    <div class="section-head"><h2>CV</h2></div>
+    <div class="cv">
+      <div>
+        <h3>Education</h3>
+        <dl>
+          {%- for e in site.data.cv.education %}
+          <dt>{{ e.title }}</dt>
+          <dd>{{ e.place }}{% if e.years and e.years != "" %} · {{ e.years }}{% endif %}{% if e.details and e.details != "" %}<br>{{ e.details | markdownify | remove: '<p>' | replace: '</p>', '<br>' }}{% endif %}</dd>
+          {%- endfor %}
+        </dl>
+      </div>
+      <div>
+        <h3>Experience</h3>
+        <dl>
+          {%- for e in site.data.cv.experience %}
+          <dt>{{ e.title }}</dt>
+          <dd>{{ e.place }}{% if e.years and e.years != "" %} · {{ e.years }}{% endif %}{% if e.details and e.details != "" %}<br>{{ e.details | markdownify | remove: '<p>' | replace: '</p>', '<br>' }}{% endif %}</dd>
+          {%- endfor %}
+        </dl>
+        <h3 style="margin-top:28px">Skills</h3>
+        <div class="skills">{{ site.data.cv.skills | markdownify }}</div>
       </div>
     </div>
   </section>
