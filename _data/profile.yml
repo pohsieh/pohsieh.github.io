@@ -1,0 +1,28 @@
+name: Po-Yu Hsieh
+eyebrow: MSc Mechanical Engineering · TU Delft
+# DRAFT intro — edit freely
+intro: >-
+  Trained as an architect, now a mechanical engineer. I work where computational design,
+  digital fabrication and robotics meet — and I am moving toward touch: tactile sensing,
+  friction, and how humans regulate grip force.
+chain:
+  - Architecture
+  - Computational design
+  - Robotics
+  - Mechanics
+  - Biomechanics
+  - Human–robot interaction
+orcid: https://orcid.org/0009-0001-2682-138X
+links:
+  - label: Email
+    url: mailto:pyhsieh@tudelft.nl
+    show_in_intro: false
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/poyuhsieh/
+    show_in_intro: false
+  - label: ORCID
+    url: https://orcid.org/0009-0001-2682-138X
+    show_in_intro: true
+  - label: Portfolio PDF (6.8 MB)
+    url: /assets/files/Po-Yu_Hsieh_Portfolio.pdf
+    show_in_intro: true

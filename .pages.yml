@@ -1,0 +1,197 @@
+# Pages CMS configuration — the editing back end at https://app.pagescms.org
+# Docs: https://pagescms.org/docs/configuration/
+
+media:
+  input: assets/img
+  output: /assets/img
+  extensions: [jpg, jpeg, png, webp, gif, svg]
+
+content:
+  # ---------------------------------------------------------------- projects
+  - name: projects
+    label: Projects
+    type: collection
+    path: _projects
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      fields: [title, year, order]
+      primary: title
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle
+        type: string
+      - name: tag
+        label: Category label
+        type: string
+        description: "Short label above the title, e.g. Robotics · Master thesis"
+      - name: year
+        label: Year
+        type: string
+        description: "e.g. 2024 or 2023–2024"
+      - name: order
+        label: Order on the home page
+        type: number
+        description: "1 = first. Also sets the Previous / Next order."
+      - name: summary
+        label: One-line summary
+        type: text
+      - name: cover
+        label: Cover image (home page card)
+        type: image
+      - name: hero
+        label: Hero image (top of the project page)
+        type: image
+        description: "Leave empty to reuse the cover image."
+      - name: instructor
+        label: Instructor(s)
+        type: string
+      - name: collaboration
+        label: Collaboration
+        type: string
+      - name: publication
+        label: Publication
+        type: text
+        description: "Markdown links allowed: [doi](https://doi.org/...). Blank line = new line."
+      - name: research_type
+        label: Research type
+        type: string
+      - name: video
+        label: YouTube video ID
+        type: string
+        description: "Only the ID, e.g. 9UWLf1npNsw from https://youtu.be/9UWLf1npNsw"
+      - name: keywords
+        label: Keywords
+        type: string
+        list: true
+      - name: figures
+        label: Figures
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index}. {caption}"
+        fields:
+          - name: image
+            label: Image
+            type: image
+          - name: caption
+            label: Caption
+            type: string
+          - name: size
+            label: Width
+            type: select
+            description: "full = whole row; two half figures in a row sit side by side"
+            options:
+              values: [full, half]
+      - name: body
+        label: Text
+        type: rich-text
+        options:
+          format: markdown
+
+  # ---------------------------------------------------------------- home page data
+  - name: profile
+    label: Profile & intro
+    type: file
+    path: _data/profile.yml
+    format: yaml
+    fields:
+      - name: name
+        label: Name
+        type: string
+      - name: eyebrow
+        label: Line above the name
+        type: string
+      - name: intro
+        label: Intro paragraph
+        type: text
+      - name: chain
+        label: Discipline chain
+        type: string
+        list: true
+      - name: orcid
+        label: ORCID URL
+        type: string
+      - name: links
+        label: Links (footer)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            type: string
+          - name: url
+            type: string
+          - name: show_in_intro
+            label: Also show under the intro
+            type: boolean
+
+  - name: publications
+    label: Publications
+    type: file
+    path: _data/publications.yml
+    format: yaml
+    list: true
+    fields:
+      - name: venue
+        label: Venue label
+        type: string
+      - name: title
+        label: Title
+        type: string
+      - name: authors
+        label: Authors
+        type: string
+        description: "Markdown: put your name in **bold**"
+      - name: where
+        label: Venue, pages, link
+        type: text
+        description: "Markdown links allowed: [doi](https://doi.org/...)"
+      - name: project
+        label: Linked project (file name without .md)
+        type: string
+
+  - name: cv
+    label: CV
+    type: file
+    path: _data/cv.yml
+    format: yaml
+    fields:
+      - name: education
+        label: Education
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - { name: title, type: string }
+          - { name: place, type: string }
+          - { name: years, type: string }
+          - { name: details, type: text, description: "Markdown; blank line = new line" }
+      - name: experience
+        label: Experience
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - { name: title, type: string }
+          - { name: place, type: string }
+          - { name: years, type: string }
+          - { name: details, type: text, description: "Markdown; blank line = new line" }
+      - name: skills
+        label: Skills
+        type: text

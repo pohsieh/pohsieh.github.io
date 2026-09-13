@@ -1,0 +1,36 @@
+# `details` and `skills` accept Markdown. One line break = new line on the page.
+education:
+  - title: MSc Mechanical Engineering (Biomechanical Design)
+    place: Delft University of Technology, the Netherlands
+    years: 2025 – present
+    details: Mechatronics, robotics, human–robot interaction, bio-inspired design
+  - title: MSc Architecture (Digital Fabrication / Robotics / Computational Design)
+    place: National Yang Ming Chiao Tung University, Taiwan
+    years: 2022 – 2025
+    details: |
+      Thesis: [*Design of a Rigid-Flexible Tensegrity-Based Articulated Manipulator*](https://thesis.lib.nycu.edu.tw/items/f07ced9f-84f0-41d4-a79c-6ef8582267d8)
+
+      First Prize, Master Thesis Research · First Prize, GIA Design Competition 2022 & 2023
+
+      Scholarships from the National Science and Technology Council and the Graduate Institute
+  - title: BArch Architecture
+    place: National Cheng Kung University, Taiwan
+    years: ""
+    details: ""
+experience:
+  - title: Robotic Engineer — ROSO (Robotic Solution)
+    place: Taiwan / remote
+    years: 2025 – present
+    details: Robotics research with Siemens and experiments for training data; topology optimization, structural analysis and fabrication protocols for large-scale 3D-printed structures
+  - title: Instructor — Workshop “Reinforcement Learning”
+    place: Taiwan
+    years: "2025"
+    details: Designed, implemented and demonstrated RL on a visual programming interface
+  - title: Research Assistant — NYCU
+    place: Taiwan
+    years: 2023 – 2025
+    details: Five publications on robotics, mechatronics and parametric structural design; deep learning for bio-inspired robots
+skills: |
+  Python, MATLAB, C++, JavaScript, ROS, Arduino · CAD / CAM, Grasshopper · Adobe suite, LaTeX
+
+  Mandarin (native), English (TOEFL 108/120)

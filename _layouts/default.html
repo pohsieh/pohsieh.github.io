@@ -1,0 +1,54 @@
+{%- assign profile = site.data.profile -%}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }} — Robotics, Biomechanics &amp; Computational Design{% endif %}</title>
+<meta name="description" content="{{ page.summary | default: site.description | escape }}">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>△</text></svg>">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="{{ '/' | relative_url }}">{{ profile.name }}</a>
+    <nav class="nav" aria-label="Main">
+      <a href="{{ '/#work' | relative_url }}">Work</a>
+      <a href="{{ '/#publications' | relative_url }}">Publications</a>
+      <a href="{{ '/#cv' | relative_url }}">CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+{{ content }}
+
+<footer class="site-footer" id="contact">
+  <div class="wrap">
+    <span>© {{ site.time | date: "%Y" }} {{ profile.name }}</span>
+    <div class="links">
+      {%- for l in profile.links %}
+      <a href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.label }}</a>
+      {%- endfor %}
+    </div>
+  </div>
+</footer>
+<script>
+  // Click a figure to view it full screen; click again or press Esc to close.
+  document.addEventListener('click', e => {
+    const open = document.querySelector('.lightbox');
+    if (open) { open.remove(); return; }
+    const img = e.target.closest('.fig img');
+    if (!img) return;
+    const lb = document.createElement('div');
+    lb.className = 'lightbox';
+    const big = document.createElement('img');
+    big.src = img.src; big.alt = img.alt;
+    lb.appendChild(big);
+    document.body.appendChild(lb);
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelector('.lightbox')?.remove(); });
+</script>
+</body>
+</html>

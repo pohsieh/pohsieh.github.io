@@ -1,0 +1,21 @@
+# Site settings. Content lives in _projects/ (one file per project) and _data/ (profile,
+# publications, CV). Edit those — or use Pages CMS (https://app.pagescms.org) — not the layouts.
+title: Po-Yu Hsieh
+description: Portfolio of Po-Yu Hsieh — robotics, biomechanical design, computational design and digital fabrication.
+url: "https://pohsieh.github.io"
+baseurl: ""
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name.html
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+
+markdown: kramdown
+exclude: [README.md, Gemfile, Gemfile.lock, vendor]

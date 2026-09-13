@@ -1,0 +1,63 @@
+---
+layout: default
+---
+{%- comment -%}
+  Optional fields may be missing or saved as "" by Pages CMS; in Liquid "" is truthy,
+  so every optional field is checked with `!= ""` as well.
+{%- endcomment -%}
+{%- assign projects = site.projects | sort: "order" -%}
+{%- for p in projects -%}{%- if p.url == page.url -%}{%- assign idx = forloop.index0 -%}{%- endif -%}{%- endfor -%}
+{%- assign last = projects.size | minus: 1 -%}
+{%- if idx > 0 -%}{%- assign pi = idx | minus: 1 -%}{%- assign prev = projects[pi] -%}{%- endif -%}
+{%- if idx < last -%}{%- assign ni = idx | plus: 1 -%}{%- assign next = projects[ni] -%}{%- endif -%}
+{%- assign hero = page.hero | default: page.cover -%}
+{%- assign has_video = false -%}{%- if page.video and page.video != "" -%}{%- assign has_video = true -%}{%- endif -%}
+<main class="wrap">
+  <div class="proj-head">
+    {% if page.tag and page.tag != "" %}<div class="eyebrow">{{ page.tag }}</div>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle and page.subtitle != "" %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
+  </div>
+  {% if hero and hero != "" %}<figure class="hero"><img src="{{ hero | relative_url }}" alt="{{ page.title | escape }}"></figure>{% endif %}
+
+  <div class="proj-body">
+    <aside class="facts">
+      {% if page.summary and page.summary != "" %}<p style="margin:0 0 8px">{{ page.summary }}</p>{% endif %}
+      <dl>
+        {% if page.instructor and page.instructor != "" %}<dt class="label">Instructor</dt><dd>{{ page.instructor }}</dd>{% endif %}
+        {% if page.collaboration and page.collaboration != "" %}<dt class="label">Collaboration</dt><dd>{{ page.collaboration }}</dd>{% endif %}
+        {% if page.publication and page.publication != "" %}<dt class="label">Publication</dt><dd>{{ page.publication | markdownify | remove: '<p>' | replace: '</p>', '<br>' }}</dd>{% endif %}
+        {% if has_video %}<dt class="label">Video</dt><dd><a href="https://youtu.be/{{ page.video }}">Demonstration on YouTube</a></dd>{% endif %}
+        {% if page.research_type and page.research_type != "" %}<dt class="label">Research type</dt><dd>{{ page.research_type }}</dd>{% endif %}
+        {% if page.year and page.year != "" %}<dt class="label">Year</dt><dd>{{ page.year }}</dd>{% endif %}
+        {% if page.keywords and page.keywords.size > 0 %}<dt class="label">Keywords</dt>
+        <dd><ul class="keywords">{% for k in page.keywords %}<li>{{ k }}</li>{% endfor %}</ul></dd>{% endif %}
+      </dl>
+    </aside>
+    <div class="prose">
+      {{ content }}
+      {% if has_video %}
+      <h2>Demonstration</h2>
+      <div class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/{{ page.video }}" title="Demonstration video" allow="encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if page.figures and page.figures.size > 0 %}
+  <div class="figs">
+    {%- for f in page.figures %}{% if f.image and f.image != "" %}
+    <figure class="fig {{ f.size | default: 'full' }}">
+      <img src="{{ f.image | relative_url }}" loading="lazy" alt="{{ f.caption | default: page.title | escape }}">
+      {% if f.caption and f.caption != "" %}<figcaption>{{ f.caption }}</figcaption>{% endif %}
+    </figure>
+    {%- endif %}{% endfor %}
+  </div>
+  {% endif %}
+
+  <nav class="pager" aria-label="Projects">
+    {% if prev %}<a class="prev" href="{{ prev.url | relative_url }}"><span class="eyebrow">← Previous</span>{{ prev.title }}</a>{% endif %}
+    {% if next %}<a class="next" href="{{ next.url | relative_url }}"><span class="eyebrow">Next →</span>{{ next.title }}</a>{% endif %}
+  </nav>
+</main>
