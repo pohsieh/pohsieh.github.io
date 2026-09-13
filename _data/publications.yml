@@ -1,37 +1,44 @@
-# Newest first. `authors` and `where` accept Markdown: **bold**, [link](url).
-# `project` = file name of the matching project in _projects/ (without .md), optional.
+# Newest first. `url` makes the title a link (prefer the DOI). `authors` and `where` accept
+# Markdown: **bold**, [link](url). `project` = file name in _projects/ (without .md), optional.
 - venue: Journal
   title: Real-time deep stereo framework for infrared image dehazing in dynamic construction environments
-  authors: Wang, S.-Y., Liang, J.-H., Sheng, Y.-T., Liong, S.-T., Gan, Y.-S., & **Hsieh, P.-Y.**
-  where: "*Engineering Applications of Artificial Intelligence*, in press (accepted Dec. 2025)."
+  url: https://doi.org/10.1016/j.rineng.2026.110858
+  authors: Liang, J.-H., Wang, S.-Y., Sheng, Y.-T., Liong, S.-T., Gan, Y. S., & **Hsieh, P.-Y.** (2026)
+  where: "*Results in Engineering*, 30, 110858. doi:10.1016/j.rineng.2026.110858"
   project: ""
 - venue: IEEE ISPACS
   title: Comparative Evaluation of Learning Models for Bionic Robots
+  url: https://doi.org/10.1109/ISPACS62486.2024.10868337
   authors: "**Hsieh, P.-Y.** & Hou, J.-H. (2024)"
-  where: IEEE International Symposium on Intelligent Signal Processing and Communication Systems, pp. 1–5. [doi](https://doi.org/10.1109/ISPACS62486.2024.10868337)
+  where: IEEE International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS), pp. 1–5. doi:10.1109/ISPACS62486.2024.10868337
   project: learning-models
 - venue: IEEE ISPACS
   title: "A Multimedia Framework for Continuum Robots: Systematic, Computational, and Control Perspectives"
+  url: https://doi.org/10.1109/ISPACS62486.2024.10868720
   authors: "**Hsieh, P.-Y.** & Hou, J.-H. (2024)"
-  where: IEEE International Symposium on Intelligent Signal Processing and Communication Systems, pp. 1–5. [doi](https://doi.org/10.1109/ISPACS62486.2024.10868720)
+  where: IEEE International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS), pp. 1–5. doi:10.1109/ISPACS62486.2024.10868720
   project: continuum-framework
 - venue: eCAADe
   title: "Discrete Interlocking Formwork for Non-Developable Surfaces: A computational solution to complex geometries"
+  url: https://doi.org/10.52842/conf.ecaade.2024.1.333
   authors: "**Hsieh, P.-Y.** & Hou, J.-H. (2024)"
-  where: Proceedings of eCAADe 2024, Vol. 1, pp. 333–342. [CumInCAD](https://papers.cumincad.org/cgi-bin/works/paper/ecaade2024_87)
+  where: Proceedings of eCAADe 2024, Vol. 1, pp. 333–342. doi:10.52842/conf.ecaade.2024.1.333
   project: interlocking-formwork
 - venue: eCAADe
   title: "Low-Tech Bamboo Constructions: Introducing a cable-strut approach for resource-limited conditions"
+  url: https://doi.org/10.52842/conf.ecaade.2024.1.393
   authors: "**Hsieh, P.-Y.** & Hou, J.-H. (2024)"
-  where: Proceedings of eCAADe 2024, Vol. 1, pp. 393–400. [CumInCAD](https://papers.cumincad.org/cgi-bin/works/paper/ecaade2024_115)
+  where: Proceedings of eCAADe 2024, Vol. 1, pp. 393–400. doi:10.52842/conf.ecaade.2024.1.393
   project: bamboo
 - venue: CAADRIA
   title: A Biomimetic Robotic System with Tensegrity-Based Compliant Mechanism
+  url: https://doi.org/10.52842/conf.caadria.2024.3.131
   authors: "**Hsieh, P.-Y.** & Hou, J.-H. (2024)"
-  where: Proceedings of CAADRIA 2024, Vol. 3, pp. 131–140. [doi](https://doi.org/10.52842/conf.caadria.2024.3.131)
+  where: Proceedings of CAADRIA 2024, Vol. 3, pp. 131–140. doi:10.52842/conf.caadria.2024.3.131
   project: tensegrity
 - venue: Preprint
   title: "Visualization and Optimization of Continuum Robots: Integration of Lie Group Kinematics and Evolutionary Algorithm"
+  url: https://arxiv.org/abs/2410.14305
   authors: "**Hsieh, P.-Y.** & Hou, J.-H. (2024)"
-  where: arXiv. [arXiv:2410.14305](https://doi.org/10.48550/arXiv.2410.14305)
+  where: arXiv:2410.14305
   project: lie-group
